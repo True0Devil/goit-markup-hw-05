@@ -4,6 +4,8 @@
   --title-color: #212121;
   --background-color: #2f303a;
   --icon-base-color: #afb1b8;
+  --about-bg: rgba(47, 48, 58, 0.8);
+  --portfolio-bg: rgba(33, 150, 243, 0.9);
 }
 
 body {
@@ -64,6 +66,10 @@ body {
   list-style-type: none;
 }
 
+.nav-list > li {
+  position: relative;
+}
+
 .nav-list li:not(:last-child) {
   margin-right: 50px;
 }
@@ -79,10 +85,24 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navigation.current {
   color: var(--accent-color);
+}
+
+.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 
 .navigation:hover,
@@ -115,6 +135,8 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-icon {
@@ -183,6 +205,8 @@ body {
   border: none;
 
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -261,8 +285,36 @@ body {
   justify-content: space-between;
 }
 
+.work-desc-list > li {
+  position: relative;
+}
+
 .work-img {
   display: block;
+}
+
+.about-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 70px;
+
+  justify-content: center;
+
+  background-color: var(--about-bg);
+}
+
+.about-title {
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
 
 .section.grey {
@@ -335,6 +387,9 @@ body {
   border-radius: 50%;
 
   color: var(--icon-base-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socials-link:hover,
@@ -368,6 +423,9 @@ body {
   color: #afb1b8;
   border: 1px solid #afb1b8;
   border-radius: 4px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-icon-container:hover,
@@ -432,6 +490,8 @@ body {
   font-style: normal;
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-contact:hover,
@@ -476,6 +536,8 @@ body {
 
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-socials-link:hover,
@@ -514,6 +576,10 @@ body {
   border: none;
 
   cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-filter:focus,
@@ -537,6 +603,8 @@ body {
   border: 1px solid #eeeeee;
   border-top: none;
   width: calc((100% - 60px) / 3);
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-item:hover,
@@ -555,10 +623,44 @@ body {
 
 .portfolio-link {
   text-decoration: none;
+  display: block;
+  width: calc(100% + 2px);
+}
+
+.portfolio-thumb {
+  position: relative;
+  overflow: hidden;
 }
 
 .portfolio-img {
   display: block;
+}
+
+.portfolio-overlay {
+  position: absolute;
+
+  padding: 63px 24px;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--portfolio-bg);
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-overlay > p {
+  margin: 0;
+
+  font-size: 18px;
+  line-height: 1.56;
+  color: #ffffff;
+  text-align: center;
+}
+
+.portfolio-item:hover .portfolio-overlay,
+.portfolio-item:focus .portfolio-overlay {
+  transform: translateY(-100%);
 }
 
 .portfolio-about {
@@ -578,12 +680,14 @@ body {
   letter-spacing: 0.06em;
 
   color: var(--title-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-title:hover,
-.portfolio-title:focus,
-.portfolio-description:hover,
-.portfolio-description:focus {
+.portfolio-item:hover .portfolio-title,
+.portfolio-link:focus .portfolio-title,
+.portfolio-item:hover .portfolio-description,
+.portfolio-link:focus .portfolio-description {
   color: var(--accent-color);
 }
 
@@ -593,4 +697,6 @@ body {
   font-size: 16px;
   line-height: 1.88;
   color: var(--text-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
