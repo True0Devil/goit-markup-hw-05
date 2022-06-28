@@ -752,9 +752,12 @@ body {
   padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  color: #000000;
 }
 
 .icon-close {
   width: 18px;
   height: 18px;
+
+  fill: currentColor;
 }
