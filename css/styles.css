@@ -717,7 +717,7 @@ body {
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: collapse;
+  visibility: hidden;
 }
 
 .modal {
